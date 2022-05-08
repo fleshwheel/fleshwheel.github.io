@@ -1,0 +1,21 @@
+side note: upon completing this song, i tried to make a folder named
+"amazon expectations" to store the project file in. the original name
+of the folder was "failed (mailed) order". finder did not let me change
+the name of the folder for some mysterious reason... i needed to use `mv`.
+
+now it's me
+on the telephone
+i called 'cause
+i got home
+i recieved the packages that you sent
+i wanted to be clear, so
+in the statement where you said
+the order contained 10 of them
+i only recieved 9
+how could this be
+how could this be?
+please respond
+imminently
+with instructions
+i will
+get notifications on my apple watch 
