@@ -1,0 +1,3 @@
+[submodule "spectrogram"]
+	path = spectrogram
+	url = git@github.com:fleshwheel/spectrogram
