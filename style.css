@@ -26,7 +26,7 @@
 		font-family: ;
 	    list-style-type: "  ──▸ ";
 		border-left: 4px solid black;
-		margin-left: 4em;
+		margin-left: 5px;
 	}
 	h1 {
 	    font-size: 2em;
@@ -44,6 +44,9 @@ color: white;
 	
 	@media only screen and (min-width: 768px) {
 		body {
+			margin: 2em;
+		}
+		ul {
 			margin: 2em;
 		}
 	}
