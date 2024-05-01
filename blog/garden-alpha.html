@@ -1,0 +1,109 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>"garden" analog prototyping board (version 0)</title>
+
+  <meta name="description" content="the fleshwheel website.">
+  <meta name="author" content="fleshwheel">
+	
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="../style.css">
+<style>
+.td-black {
+background-color: black;
+color: white
+}
+
+.td-green {
+background-color: green;
+}
+.td-yellow {
+background-color: yellow;
+color: black;
+}
+.td-blue {
+background-color: blue;
+color: white;
+}
+img {
+width: 100%;
+}s
+
+</style>
+</head>
+
+<body>
+  <h3><a href="index.html">← back</a></h3>
+  <h1><i>"garden" analog prototyping board (version 0)</i></h1>
+<p>i have been studied exotic computational mediums since college, and one paradigm that mixes very naturally with my interest in synthesizers is analog computing.</p>
+<img src="media/garden-alpha/pace_tr10.jpg"></img>
+<p>many early analog computers utilized an interface essentially identical to modular synthesizers. the principle of analog computing is in fact not limited to electronics; in 1949 Bill Philips developed a water-based computer to simulate an economy. however, the fundamental principles are the same -- water is often used as an analogy to explain the behavior of electrical circuits.</p>
+<img src="media/garden-alpha/hydraulic-computer.gif">
+
+<p>i was greatly inspired by <a href="https://anabrid.com">anabrid</a>'s <a href="https://the-analog-thing.com">the analog thing</a>. i appreciate that they have released their <a href="https://github.com/anabrid/the-analog-thing">schematics</a> into the public domain, which has made a great reference for my own circuit design and chip choice.
+
+<img src="media/garden-alpha/pcb-front.jpg">
+
+the board features 6 3.5mm TS mono audio jacks to serve as analog I/O and to provide power (±9V recommended) to the ICs on board. the ICs are:
+<ul>
+<li>TL084: quad op-amp (<a href="media/garden-alpha/tl084.pdf">datasheet</a>)</li>
+<li>TLV2462: dual op-amp (<a href="media/garden-alpha/tlv2462.pdf">datasheet</a>)</li>
+<li>CD4093B: schmitt trigger nand gate (<a href="media/garden-alpha/cd4093b.pdf">datasheet</a>)</li>
+<li>AD633: analog multiplier (<a href="media/garden-alpha/ad633.pdf">datasheet</a>)</li>
+</ul>
+
+the board has a selection of different resistor and capacitor values. the selection is a combination of my guessing and what i had available. i provided multiples of commonly used resistor/capacitor denominations for designs that may require multiple of a specific value. you may notic that the arrangement of capacitors is quite frenetic, this is the order in which they came in my box collection. the arrangement starts with μ, the largest unit (E-6), followed by p, the smallest unit (E-12) and then n which is in between the two (E-9). 0.1μF is equivalent to 100nF. the board also features 2 1N4001 diodes, 4 10kΩ potentiometers, a momentary button, and 2 LEDs.
+
+<img src="media/garden-alpha/pcb-back.jpg">
+
+
+i created a reference table mostly for myself of the pinouts of the ICs and the resistor/capacitor values.
+
+  <table>
+    <tbody>
+      <tr><td class="td-blue">out 1</td><td>TL084CN</td><td class="td-blue">out 4</td><td class="td-black">1Ω</td><td class="td-black">0.1µF</td></tr> 
+      <tr><td class="td-blue">in- 1</td><td></td><td class="td-blue">in- 4</td><td class="td-black">1Ω</td><td class="td-black">0.1µF</td></tr>
+      <tr><td class="td-blue">in+ 1</td><td></td><td class="td-blue">in+ 4</td><td class="td-green">3.9Ω</td><td class="td-yellow">0.15µF</td></tr>
+      <tr><td class="td-black">vcc+</td><td></td><td class="td-black">vcc-</td><td class="td-green">8.2Ω</td><td class="td-yellow">0.22µF</td></tr>
+      <tr><td class="td-blue">in+ 2</td><td></td><td class="td-blue">in+ 3</td><td class="td-black">10Ω</td><td class="td-yellow">0.33µF</td></tr>
+      <tr><td class="td-blue">in- 2</td><td></td><td class="td-blue">in- 3</td><td class="td-black">10Ω</td><td class="td-yellow">0.47µF</td></tr>
+      <tr><td class="td-blue">out 2</td><td></td><td class="td-blue">out 3</td><td class="td-green">39Ω</td><td class="td-yellow">0.68µF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-green">82Ω</td><td class="td-black">1µF</td></tr>
+      <tr><td class="td-blue">out 1</td><td>TLV2462</td><td class="td-black">vcc+</td><td class="td-black">100Ω</td><td class="td-black">1µF</td></tr>
+      <tr><td class="td-blue">in- 1</td><td></td><td class="td-blue">out 2</td><td class="td-black">100Ω</td><td class="td-yellow">2.2µF</td></tr>	
+      <tr><td class="td-blue">in+ 1</td><td></td><td class="td-blue">in- 2</td><td class="td-green">390Ω</td><td class="td-yellow">4.7µF</td></tr>
+      <tr><td class="td-black">gnd/vcc-</td><td></td><td class="td-blue">in+ 2</td><td class="td-green">820Ω</td><td class="td-black">10µF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-black">1kΩ</td><td class="td-black">10µF</td></tr>
+      <tr><td class="td-blue">a 1</td><td>CD4093B</td><td class="td-black">vcc+</td><td class="td-black">1kΩ</td><td></td></tr>
+      <tr><td class="td-blue">b 1</td><td></td><td class="td-blue">b 4</td><td class="td-green">1.5kΩ</td><td class="td-black">10pF</td></tr>
+      <tr><td class="td-blue">out 1</td><td></td><td class="td-blue">a 4</td><td class="td-green">3.9kΩ</td><td class="td-black">10pF</td></tr>	
+      <tr><td class="td-blue">out 2</td><td></td><td class="td-blue">out 4</td><td class="td-green">5.6kΩ</td><td class="td-yellow">47pF</td></tr>
+      <tr><td class="td-blue">a 2</td><td></td><td class="td-blue">out 3</td><td class="td-green">8.2kΩ</td><td class="td-yellow">68pF</td></tr>
+      <tr><td class="td-blue">b 2</td><td></td><td class="td-blue">b 3</td><td class="td-black">10kΩ</td><td class="td-black">100pF</td></tr>
+      <tr><td class="td-black">gnd</td><td></td><td class="td-blue">a 3</td><td class="td-black">10kΩ</td><td class="td-black">100pF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-black">10kΩ</td><td class="td-yellow">200pF</td></tr>
+      <tr><td class="td-blue">x-</td><td>AD633</td><td class="td-black">vcc+</td><td class="td-black">10kΩ</td><td class="td-black">1nF</td></tr>	
+      <tr><td class="td-blue">x+</td><td></td><td class="td-blue">out</td><td class="td-green">15kΩ</td><td class="td-black">1nF</td></tr>
+      <tr><td class="td-blue">y-</td><td></td><td class="td-blue">sum</td><td class="td-green">39kΩ</td><td></td></tr>
+      <tr><td class="td-blue">y+</td><td></td><td class="td-black">vcc-</td><td class="td-green">56kΩ</td><td class="td-yellow">4.7nF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-green">82kΩ</td><td class="td-black">10nF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-black">100kΩ</td><td class="td-black">10nF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-black">100kΩ</td><td></td></tr>	
+      <tr><td></td><td></td><td></td><td class="td-black">100kΩ</td><td class="td-black">10nF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-green">390kΩ</td><td class="td-black">10nF</td></tr>
+      <tr><td></td><td></td><td></td><td class="td-green">820kΩ</td><td class="td-yellow">47nF</td></tr>
+      <tr><td class="td-blue">+</td><td>1N4001</td><td class="td-black">-</td><td class="td-black">1MΩ</td><td class="td-black">100nF</td></tr>
+      <tr><td class="td-blue">+</td><td>1N4001</td><td class="td-black">-</td><td class="td-black">1MΩ</td><td class="td-black">100nF</td></tr>
+    </tbody>
+  </table>
+
+choosing to connect each terminal of the components to rows of (typically 3) pins provides space for the heads of the wires to be plugged in.
+
+</body>
+</html>
